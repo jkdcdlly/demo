@@ -57,6 +57,7 @@ class PostList(models.Model):
 class PostDetail(models.Model):
     id = models.CharField(max_length=255, primary_key=True, default="0")
     url = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
     mate_desc = models.CharField(max_length=255)
     mate_key = models.CharField(max_length=255)
     postList = models.OneToOneField(PostList, on_delete=models.CASCADE, default="0")
