@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if postdetail.title %}
+        <title>{{ postdetail.title }}</title>
+    {% else %}
+        <title>MMO Trading Market</title>
+    {% endif %}
+    {% load static %}
+
+    <link href="{% static 'polls/style2.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- Loading Bootstrap -->
+    <link href="{% static 'dist/css/vendor/bootstrap.min.css' %} " rel="stylesheet" type="text/css"/>
+    <!-- Loading Flat UI -->
+    <link href="{% static 'dist/css/flat-ui.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'docs/assets/css/demo.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="{% static 'dist/favicon.ico' %}" type="text/css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="demo-headline">
+        <h1 class="demo-logo">
+            MMO Trading Market
+        </h1>
+    </div>
+    <div class="row demo-row">
+        <!--标题栏开始-->
+        <div class="col">
+            <nav class="navbar navbar-inverse navbar-embossed navbar-expand-lg" role="navigation">
+                <a class="navbar-brand" href="/">Home</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse"
+                        data-target="#navbar-collapse-01"></button>
+                <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li><a href="/">Trading Market</a></li>
+                        <li><a href="#fakelink">About Us</a></li>
+                    </ul>
+                    <!--搜索开始
+                    <form class="navbar-form form-inline my-2 my-lg-0" action="#" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                            </div>
+                        </div>
+                    </form>-->
+                    <!--搜索结束-->
+                </div><!-- /.navbar-collapse -->
+            </nav><!-- /navbar -->
+        </div>
+        <!--标题栏结束-->
