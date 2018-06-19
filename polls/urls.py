@@ -18,8 +18,8 @@ from . import views
 
 app_name = 'polls'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('list', views.PostListView, name='list'),
+    # path('', views.IndexView.as_view(), name='index'),
+    path('', views.PostListView, name='list'),
     path('<str:pk>/', views.TradeView.as_view(), name='detail'),
     path('posts/<str:pk>/', views.PostDetailView.as_view(), name='posts'),
     path('<str:pk>/results/', views.ResultsView.as_view(), name='results'),
