@@ -135,7 +135,7 @@ def WonListView(request):
 
 def PostListView(request):
     contact_list = PostList.objects.all()
-    paginator = Paginator(contact_list, 10)  # Show 25 contacts per page
+    paginator = Paginator(contact_list, 20)  # Show 20 contacts per page
 
     page = request.GET.get('page')
     try:

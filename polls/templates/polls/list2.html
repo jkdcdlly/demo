@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'header.html' %}
+<!--内容开始-->
+{% for contact in contacts %}
+    <div class="col-12">
+        <div class="tile">
+            <img src="{% static 'docs/assets/images/icons/wow.jpg' %}" alt="Compas"
+                 class="tile-image   big-illustration float-left" style="margin-top: 0px;">
+            <h3 class="tile-title">{{ contact.title }}</h3>
+            <p>{{ contact.text }}</p>
+            <a target="view_window" class="btn btn-inverse  btn-large btn-block"
+                    {#                               href="https://www.ownedcore.com/forums/mmo-trading-market/world-of-warcraft-buy-sell-trade/307565-wtb-all-kinds-of-gold-all-server-exchange-gold-keys.html?s=632c2c75b812c8eaa611178eafd79c14">{{ contact.title }}</a>#}
+                    {#                       href="posts">{{ contact.title }}</a>#}
+               href="{% url 'polls:posts' contact.id %}">{{ contact.title }}</a>
+        </div>
+    </div>
+{% endfor %}
+
+<!--分页开始-->
+{% include 'pagination.html' %}
+<!-- 分页结束 -->
+
+{% include 'footer.html' %}

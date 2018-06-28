@@ -1,20 +1,75 @@
 {% load static %}
 {% include 'header.html' %}
 <!--内容开始-->
-{% for contact in contacts %}
-    <div class="col-12">
-        <div class="tile">
-            <img src="{% static 'docs/assets/images/icons/wow.jpg' %}" alt="Compas"
-                 class="tile-image   big-illustration float-left" style="margin-top: 0px;">
-            <h3 class="tile-title">{{ contact.title }}</h3>
-            <p>{{ contact.text }}</p>
-            <a target="view_window" class="btn btn-inverse  btn-large btn-block"
-                    {#                               href="https://www.ownedcore.com/forums/mmo-trading-market/world-of-warcraft-buy-sell-trade/307565-wtb-all-kinds-of-gold-all-server-exchange-gold-keys.html?s=632c2c75b812c8eaa611178eafd79c14">{{ contact.title }}</a>#}
-                    {#                       href="posts">{{ contact.title }}</a>#}
-               href="{% url 'polls:posts' contact.id %}">{{ contact.title }}</a>
-        </div>
-    </div>
-{% endfor %}
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 11px;
+        color: #333333;
+        width: 100%;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+</style>
+<div class="col-12">
+    <!-- Table goes in the document BODY -->
+    <table class="hovertable">
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Info Header 5</th>
+        </tr>
+
+
+        {% for contact in contacts %}
+
+
+            <tr onmouseover="this.style.backgroundColor='#ffff66';"
+                onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td><span class="fui-play"></span></td>
+                <td><a target="view_window" href="{% url 'polls:posts' contact.id %}">{{ contact.title }}</a></td>
+                <td>Today</td>
+                <td></td>
+
+
+            </tr>
+
+            {#        <div class="tile">#}
+            {#            <img src="{% static 'docs/assets/images/icons/wow.jpg' %}" alt="Compas"#}
+            {#                 class="tile-image   big-illustration float-left" style="margin-top: 0px;">#}
+            {#            <h3 class="tile-title">{{ contact.title }}</h3>#}
+            {#            <p>{{ contact.text }}</p>#}
+            {#            <a target="view_window" class="btn btn-inverse  btn-large btn-block"#}
+            {#                               href="https://www.ownedcore.com/forums/mmo-trading-market/world-of-warcraft-buy-sell-trade/307565-wtb-all-kinds-of-gold-all-server-exchange-gold-keys.html?s=632c2c75b812c8eaa611178eafd79c14">{{ contact.title }}</a>#}
+            {#                       href="posts">{{ contact.title }}</a>#}
+            {#               href="{% url 'polls:posts' contact.id %}">{{ contact.title }}</a>#}
+            {#        </div>#}
+
+        {% endfor %}
+    </table>
+</div>
 
 <!--分页开始-->
 {% include 'pagination.html' %}
