@@ -156,6 +156,12 @@ class PostDetailView(generic.DetailView):
     template_name = 'polls/posts.html'
     # return render(request, 'polls/posts.html')
 
+class PostDetail(generic.DetailView):
+    model = PostDetail
+    print("===========PostDetailView==========")
+    template_name = 'polls/posts.html'
+    # return render(request, 'polls/posts.html')
+
 
 def vote(request, question_id):
     print("===========vote==========")

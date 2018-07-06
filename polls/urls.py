@@ -24,4 +24,5 @@ urlpatterns = [
     path('posts/<str:pk>/', views.PostDetailView.as_view(), name='posts'),
     path('<str:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<str:question_id>/vote/', views.vote, name='vote'),
+   # path('posts/<str:title>/', views.PostDetailView, name='vote'),
 ]
