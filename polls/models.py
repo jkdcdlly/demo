@@ -53,8 +53,8 @@ class PostList(models.Model):
     id = models.CharField(max_length=255, primary_key=True, default="0")
     url = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    trade_type = models.CharField(max_length=255)
-    game_name = models.CharField(max_length=255)
+    trade_type = models.CharField(max_length=255, default="xxx")
+    game_name = models.CharField(max_length=255, default="xxx")
     create_time = models.DateTimeField(auto_now=True)
 
 
@@ -65,6 +65,6 @@ class PostDetail(models.Model):
     mate_desc = models.CharField(max_length=255)
     mate_key = models.CharField(max_length=255)
     create_time = models.DateTimeField(auto_now=True)
-    trade_type = models.CharField(max_length=255)
-    game_name = models.CharField(max_length=255)
+    trade_type = models.CharField(max_length=255, default="xxx")
+    game_name = models.CharField(max_length=255, default="xxx")
     postList = models.OneToOneField(PostList, on_delete=models.CASCADE, default="0")
