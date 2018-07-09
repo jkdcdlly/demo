@@ -156,6 +156,7 @@ class PostDetailView(generic.DetailView):
     template_name = 'polls/posts.html'
     # return render(request, 'polls/posts.html')
 
+
 class PostDetail(generic.DetailView):
     model = PostDetail
     print("===========PostDetailView==========")
@@ -181,3 +182,7 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def google(request):
+    return render(request, "polls/google9a8e8bb776390296.html")

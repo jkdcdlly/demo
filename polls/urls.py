@@ -21,8 +21,10 @@ urlpatterns = [
     # path('', views.IndexView.as_view(), name='index'),
     path('', views.PostListView, name='list'),
     path('<str:pk>/', views.TradeView.as_view(), name='detail'),
-    path('posts/<str:pk>/', views.PostDetailView.as_view(), name='posts'),
+    path('mmo-trading-market/<str:pk>/',views.PostDetailView.as_view(), name='details'),
+
     path('<str:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<str:question_id>/vote/', views.vote, name='vote'),
-   # path('posts/<str:title>/', views.PostDetailView, name='vote'),
+    path('google', views.vote, name='vote'),
+
 ]
