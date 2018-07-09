@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    # path('polls/', include('polls.urls')),
-    path('', include('polls.urls')),
+    path('mmo-trading-market/', include('polls.urls')),
+    # path('', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
 from django.conf import settings
 
-if settings.DEBUG is False:
-    urlpatterns += path('', (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-                                {'document_root': settings.STATIC_ROOT,
-                                 }),
-                        )
+# if settings.DEBUG is False:
+#     urlpatterns += path('', (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+#                                 {'document_root': settings.STATIC_ROOT,
+#                                  }),
+#                         )
