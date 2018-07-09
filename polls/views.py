@@ -134,7 +134,8 @@ def WonListView(request):
 
 
 def PostListView(request):
-    contact_list = PostList.objects.all()
+    # contact_list = PostList.objects.all()
+    contact_list = PostList.objects.order_by('-create_time').all()
     paginator = Paginator(contact_list, 50)  # Show 50 contacts per page
 
     page = request.GET.get('page')
