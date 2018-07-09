@@ -33,6 +33,9 @@
     }
 </style>
 <div class="col-12">
+<!--分页开始-->
+{% include 'pagination.html' %}
+<!-- 分页结束 -->
     <!-- Table goes in the document BODY -->
     <table class="hovertable">
         <tr>
@@ -48,9 +51,9 @@
 
             <tr onmouseover="this.style.backgroundColor='#ffff66';"
                 onmouseout="this.style.backgroundColor='#d4e3e5';">
-                <td><span class="fui-play"></span></td>
-                <td><a target="view_window" href="{% url 'polls:accountTrade' contact.id %}">{{ contact.title }}</a></td>
-                <td>Today</td>
+                <td>{{contact.game_name}}</td>
+                <td><a target="view_window" href="{% url 'polls:posts' contact.id %}">{{ contact.title }}</a></td>
+                <td>{{contact.create_time}}</td>
 {#                <td></td>#}
 
 
@@ -69,10 +72,7 @@
 
         {% endfor %}
     </table>
-</div>
-
 <!--分页开始-->
 {% include 'pagination.html' %}
 <!-- 分页结束 -->
-
-{% include 'footer.html' %}
+</div>
