@@ -3,3 +3,4 @@ mysite/settings.py
 db.sqlite3
 *.py[cod]
 migrations
+*DS_Store
