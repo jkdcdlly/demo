@@ -64,6 +64,7 @@ class PostDetail(models.Model):
     title = models.CharField(max_length=255)
     mate_desc = models.CharField(max_length=255)
     mate_key = models.CharField(max_length=255)
+    post_detail = models.TextField(max_length=65530, null=True)
     create_time = models.DateTimeField(auto_now=True)
     trade_type = models.CharField(max_length=255, default="xxx")
     game_name = models.CharField(max_length=255, default="xxx")
