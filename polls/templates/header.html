@@ -7,6 +7,18 @@
     {% else %}
         <title>MMO Trading Market</title>
     {% endif %}
+
+    {% if postdetail.mate_desc %}
+        <meta name="description" content="{{ postdetail.mate_desc }}">
+    {% else %}
+        <meta name="description" content="MMO Trading Market">
+    {% endif %}
+    {% if postdetail.mate_desc %}
+        <meta name="keywords" content="{{ postdetail.mate_key }}">
+    {% else %}
+        <meta name="keywords" content="MMO Trading Market">
+    {% endif %}
+
     {% load static %}
 
     <!-- Loading Bootstrap -->
