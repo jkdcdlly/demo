@@ -3,8 +3,9 @@
 {% include 'header.html' %}
 <!--内容开始-->
 <div class="col-12" id='post_message'>
-
-    {{ postdetail.post_detail }}
+    {% autoescape off %}
+        {{ postdetail.post_detail }}
+    {% endautoescape %}
 </div>
 <!--内容结束-->
 {% include 'footer.html' %}
