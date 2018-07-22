@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
     {% if postdetail.title %}
         <title>{{ postdetail.title }}</title>
     {% else %}
         <title>MMO Trading Market</title>
     {% endif %}
-
+    <meta charset="UTF-8">
     {% if postdetail.mate_desc %}
         <meta name="description" content="{{ postdetail.mate_desc }}">
     {% else %}
@@ -20,6 +20,11 @@
     {% endif %}
 
     {% load static %}
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
 
     <!-- Loading Bootstrap -->
     <link href="{% static 'dist/css/vendor/bootstrap.min.css' %} " rel="stylesheet" type="text/css"/>
