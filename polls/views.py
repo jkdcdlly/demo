@@ -22,12 +22,30 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         """Return the last five published questions."""
         start_with = self.request.GET.get('game_name')
+        print(
+            "IndexViewIndexViewIndexViewIndexView=====================================================================",
+            start_with)
         return GameInfo.objects \
             .filter(game_name__startswith=("" if start_with is None or start_with == "Hot" else start_with)) \
             .order_by('game_name')
-        # else:
-        #     return GameInfo.objects \
-        #         .order_by('game_name')
+
+
+def searchView(request):
+    """Return the last five published questions."""
+    game_name = request.GET["game_name"]
+    game_info_list = GameInfo.objects \
+        .filter(game_img_url__contains=game_name) \
+        .order_by('game_name')
+    return render(request, 'polls/index.html', {'game_info_list': game_info_list})
+
+
+def startView(request, game_name):
+    """Return the last five published questions."""
+    print("=====================================================================", game_name)
+    game_info_list = GameInfo.objects \
+        .filter(game_name__startswith=("" if game_name is None or game_name == "Hot" else game_name)) \
+        .order_by('game_name')
+    return render(request, 'polls/index.html', {'game_info_list': game_info_list})
 
 
 class DetailView(generic.DetailView):
@@ -67,7 +85,7 @@ def WonListView(request):
 
 
 def PostListView(request, game_name):
-    print("测试今日")
+    print("=teste==========================================")
     contact_list = PostList.objects.filter(game_name=game_name).order_by('-create_time').all()
     paginator = Paginator(contact_list, 25)  # Show 25 contacts per page
 

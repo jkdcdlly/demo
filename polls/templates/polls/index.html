@@ -4,16 +4,16 @@
 <div class="row pagination">
     {{ game_name }}
     <ul>
-        <li><a href="?game_name=Hot">Hot</a></li>
+        <li><a href="/start/Hot">Hot</a></li>
         {% for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-            <li><a href="?game_name={{ i }}" rel="nofollow">{{ i }}</a></li>
+            <li><a href="{% url 'polls:start' i %}" rel="nofollow">{{ i }}</a></li>
         {% endfor %}
     </ul>
 </div>
 <div class="row ">
     {% if game_info_list %}
         {% for game_info in game_info_list %}
-            <div class="col-md-3 col-sm-6 col-xs-6" >
+            <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="tile btn-success">
                     <a class="btn  btn-large btn-block"
                        href="{% url 'polls:list' game_info.game_name %}">
