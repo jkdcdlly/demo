@@ -32,26 +32,23 @@
         border-color: #a9c6c9;
     }
 </style>
-<div class="row">
-    <div class="col-12">
-        <!-- Table goes in the document BODY -->
-        <table class="hovertable">
-            <tr>
-                <th>Game</th>
-                <th>Title</th>
-                <th>Date</th>
+<div class="col-12">
+    <!-- Table goes in the document BODY -->
+    <table class="hovertable">
+        <tr>
+            <th>Game</th>
+            <th>Title</th>
+            <th>Date</th>
+        </tr>
+        {% for contact in contacts %}
+            <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+                <td>{{ contact.game_name }}</td>
+                <td><a target="_blank" href="{% url 'polls:details' contact.id %}">{{ contact.title }}</a></td>
+                <td>{{ contact.create_time }}</td>
             </tr>
-            {% for contact in contacts %}
-                <tr onmouseover="this.style.backgroundColor='#ffff66';"
-                    onmouseout="this.style.backgroundColor='#d4e3e5';">
-                    <td>{{ contact.game_name }}</td>
-                    <td><a target="_blank" href="{% url 'polls:details' contact.id %}">{{ contact.title }}</a></td>
-                    <td>{{ contact.create_time }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <!--分页开始-->
-        {% include 'pagination.html' %}
-        <!-- 分页结束 -->
-    </div>
+        {% endfor %}
+    </table>
+    <!--分页开始-->
+    {% include 'pagination.html' %}
+    <!-- 分页结束 -->
 </div>

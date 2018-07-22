@@ -26,6 +26,12 @@ class Choice(models.Model):
         return self.choice_text
 
 
+class GameInfo(models.Model):
+    id = models.IntegerField(primary_key=True)
+    game_name = models.CharField(max_length=200)
+    game_img_url = models.CharField(max_length=200)
+
+
 class Trade(models.Model):
     id = models.CharField(max_length=255, default="0", primary_key=True)
     title = models.CharField(max_length=255)

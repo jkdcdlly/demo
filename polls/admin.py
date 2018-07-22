@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Question, Choice, Trade
+from .models import Question, Choice, Trade, GameInfo
 
 
 # admin.site.register(Question)
@@ -26,3 +26,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Trade)
+admin.site.register(GameInfo)
