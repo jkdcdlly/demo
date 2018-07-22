@@ -24,6 +24,12 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']
 
 
+class GameInfoAdmin(admin.ModelAdmin):
+    list_display = ('game_name', 'game_img_url')
+    search_fields = ['game_name']
+    list_filter = ['game_name']
+
+
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Trade)
-admin.site.register(GameInfo)
+admin.site.register(GameInfo, GameInfoAdmin)
