@@ -27,7 +27,7 @@ class Choice(models.Model):
 
 
 class GameInfo(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     game_name = models.CharField(max_length=200)
     game_img_url = models.CharField(max_length=200)
 
