@@ -9,6 +9,7 @@ urlpatterns = [
     path('start/<str:game_name>', views.startView, name='start'),
     path('accounts/<str:game_name>/', views.PostListView, name='list'),
     path('accounts/<str:game_name>/<str:pk>/', views.PostDetailView.as_view(), name='details'),
+    path('mmo-trading-market/<str:pk>/', views.PostDetailView.as_view()),
     # path('<str:pk>/', views.TradeView.as_view(), name='detail'),
     # path('<str:pk>/results/', views.ResultsView.as_view(), name='results'),
     # path('<str:question_id>/vote/', views.vote, name='vote'),
