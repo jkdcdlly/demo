@@ -109,11 +109,20 @@ class PostDetailView(generic.DetailView):
     # return render(request, 'polls/posts.html')
 
 
-class PostDetail(generic.DetailView):
-    model = PostDetail
-    print("===========PostDetailView==========")
-    template_name = 'polls/posts.html'
-    # return render(request, 'polls/posts.html')
+def get_post_detail(request, game_name, id):
+    contact_list = PostList.objects.filter(game_name=game_name).order_by('-create_time')[0:10]
+    postdetail = PostDetail.objects.filter(id=id).first()
+    return render(request, 'polls/posts.html', {
+        'contact_list': contact_list,
+        'postdetail ': postdetail
+    })
+
+
+# class PostDetail(generic.DetailView):
+#     model = PostDetail
+#     print("===========PostDetailView==========")
+#     template_name = 'polls/posts.html'
+#     # return render(request, 'polls/posts.html')
 
 
 def vote(request, question_id):
