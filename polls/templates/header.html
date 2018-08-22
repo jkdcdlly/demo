@@ -54,15 +54,6 @@
 </head>
 <body>
 <div class="container">
-    {#    <div class="row">#}
-    {#        <div class="col">#}
-    {#            <ul class="breadcrumb">#}
-    {#                <li><a href="#">Home</a> <span class="divider">></span></li>#}
-    {#                <li><a href="#">Tutorials</a> <span class="divider">></span></li>#}
-    {#                <li class="active">HTML5</li>#}
-    {#            </ul>#}
-    {#        </div>#}
-    {#    </div>#}
     <div class="row">
         <img src="{% static 'polls/timg.jpeg' %}" alt="Compas"
              style="width:100%;height:200px;padding:0 15px 0 15px;vertical-align: bottom;">
@@ -77,17 +68,18 @@
                         data-target="#navbar-collapse-01"></button>
                 <div class="collapse navbar-collapse" id="navbar-collapse-01">
                     <ul class="nav navbar-nav mr-auto">
-{#                        <li><a href="#">Account Trade</a></li>#}
-{#                        <li><a href="#">Gold Trade</a></li>#}
-{#                        <li><a href="#">Item Trade</a></li>#}
-{#                        <li><a href="#">Private Server</a></li>#}
-{#                        <li><a href="#">About Us</a></li>#}
+                        {#                        <li><a href="#">Account Trade</a></li>#}
+                        {#                        <li><a href="#">Gold Trade</a></li>#}
+                        {#                        <li><a href="#">Item Trade</a></li>#}
+                        {#                        <li><a href="#">Private Server</a></li>#}
+                        {#                        <li><a href="#">About Us</a></li>#}
                     </ul>
                     <!--搜索开始-->
                     <form class="navbar-form form-inline my-2 my-lg-0" action="/search" role="search">
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" id="navbarInput-01" type="search" placeholder="Search" name="game_name">
+                                <input class="form-control" id="navbarInput-01" type="search" placeholder="Search"
+                                       name="game_name">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn"><span class="fui-search"></span></button>
                                 </span>
@@ -100,6 +92,22 @@
         </div>
 
     </div>
+    {% load django_bootstrap_breadcrumbs %}
 
+    {% block breadcrumbs %}
+        {% clear_breadcrumbs %}
+        {% breadcrumb_for site_index %}
+            <a href="/">Home</a>
+        {% endbreadcrumb_for %}
+        {% if game_name %}
+            {% breadcrumb_for site_index %}
+                <a href="{% url 'polls:list' game_name %}">{{ game_name }}</a>
+            {% endbreadcrumb_for %}
+        {% endif %}
+    {% endblock %}
+
+    {% block content %}
+        {% render_breadcrumbs %}
+    {% endblock %}
 
     <!--标题栏结束-->

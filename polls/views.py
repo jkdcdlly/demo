@@ -55,45 +55,10 @@ def startView(request, game_name):
     return render(request, 'polls/index.html', {'game_info_list': game_info_list})
 
 
-class DetailView(generic.DetailView):
-    model = Question
-    print("===========DetailView==========")
-    template_name = 'polls/detail.html'
-
-
-class ResultsView(generic.DetailView):
-    model = Question
-    print("===========ResultsView==========")
-    template_name = 'polls/results.html'
-
-
-class TradeView(generic.DetailView):
-    model = Trade
-
-    print("===========DetailView==========")
-    template_name = 'polls/detail.html'
-
-
-def WonListView(request):
-    contact_list = WonList.objects.all()
-    paginator = Paginator(contact_list, 10)  # Show 25 contacts per page
-
-    page = request.GET.get('page')
-    try:
-        contacts = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        contacts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        contacts = paginator.page(paginator.num_pages)
-
-    return render(request, 'polls/list.html', {'contacts': contacts})
-
-
 def PostListView(request, game_name):
     print("=teste==========================================")
     contact_list = PostList.objects.filter(game_name=game_name).order_by('-create_time').all()
+    print(len(contact_list))
     GameInfo.objects.update_or_create(post_num=len(contact_list))
     paginator = Paginator(contact_list, 25)  # Show 25 contacts per page
 
@@ -107,14 +72,13 @@ def PostListView(request, game_name):
         # If page is out of range (e.g. 9999), deliver last page of results.
         contacts = paginator.page(paginator.num_pages)
 
-    return render(request, 'polls/list.html', {'contacts': contacts})
+    return render(request, 'polls/list.html', {'contacts': contacts, 'game_name': game_name})
 
 
 class PostDetailView(generic.DetailView):
     model = PostDetail
     print("===========PostDetailView==========")
     template_name = 'polls/posts.html'
-    # return render(request, 'polls/posts.html')
 
 
 def get_post_detail(request, game_name, id):
@@ -124,33 +88,6 @@ def get_post_detail(request, game_name, id):
         'contact_list': contact_list,
         'postdetail': postdetail
     })
-
-
-# class PostDetail(generic.DetailView):
-#     model = PostDetail
-#     print("===========PostDetailView==========")
-#     template_name = 'polls/posts.html'
-#     # return render(request, 'polls/posts.html')
-
-
-def vote(request, question_id):
-    print("===========vote==========")
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
 def google(request):
