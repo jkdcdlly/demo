@@ -12,6 +12,7 @@ from django.views import generic
 from .models import Choice, Question, Trade, WonList, PostList, PostDetail, GameInfo
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 class IndexView(generic.ListView):
@@ -25,26 +26,31 @@ class IndexView(generic.ListView):
         print(
             "IndexViewIndexViewIndexViewIndexView=====================================================================",
             start_with)
-        return GameInfo.objects \
-            .filter(game_name__startswith=("" if start_with is None or start_with == "Hot" else start_with)) \
-            .order_by('game_name')
+        game_name__startswith = "" if start_with is None or start_with == "Hot" else start_with
+        return GameInfo.objects.filter(
+            Q(game_name__startswith=game_name__startswith) &
+            Q(post_num__gt=0)
+        ).order_by('game_name')
 
 
 def searchView(request):
     """Return the last five published questions."""
     game_name = request.GET["game_name"]
-    game_info_list = GameInfo.objects \
-        .filter(game_img_url__contains=game_name) \
-        .order_by('game_name')
+    game_info_list = GameInfo.objects.filter(
+        Q(game_img_url__contains=game_name) &
+        Q(post_num__gt=0)
+    ).order_by('game_name')
     return render(request, 'polls/index.html', {'game_info_list': game_info_list})
 
 
 def startView(request, game_name):
     """Return the last five published questions."""
     print("=====================================================================", game_name)
-    game_info_list = GameInfo.objects \
-        .filter(game_name__startswith=("" if game_name is None or game_name == "Hot" else game_name)) \
-        .order_by('game_name')
+    game_name__startswith = "" if game_name is None or game_name == "Hot" else game_name
+    game_info_list = GameInfo.objects.filter(
+        Q(game_name__startswith=game_name__startswith) &
+        Q(post_num__gt=0)
+    ).order_by('game_name')
     return render(request, 'polls/index.html', {'game_info_list': game_info_list})
 
 
