@@ -58,7 +58,7 @@ def startView(request, game_name):
 def PostListView(request, game_name):
     print("=teste==========================================")
     contact_list = PostList.objects.filter(game_name=game_name).order_by('-create_time').all()
-    GameInfo.objects.update_or_create(game_name=game_name,post_num=len(contact_list))
+    GameInfo.objects.filter(game_name=game_name).update(post_num=len(contact_list))
     paginator = Paginator(contact_list, 25)  # Show 25 contacts per page
 
     page = request.GET.get('page')
