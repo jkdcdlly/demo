@@ -27,6 +27,7 @@ class IndexView(generic.ListView):
             "IndexViewIndexViewIndexViewIndexView=====================================================================",
             start_with)
         game_name__startswith = "" if start_with is None or start_with == "Hot" else start_with
+
         return GameInfo.objects.filter(
             Q(game_name__startswith=game_name__startswith) &
             Q(post_num__gt=0)
@@ -93,6 +94,7 @@ def WonListView(request):
 def PostListView(request, game_name):
     print("=teste==========================================")
     contact_list = PostList.objects.filter(game_name=game_name).order_by('-create_time').all()
+    GameInfo.objects.update_or_create(post_num=len(contact_list))
     paginator = Paginator(contact_list, 25)  # Show 25 contacts per page
 
     page = request.GET.get('page')
