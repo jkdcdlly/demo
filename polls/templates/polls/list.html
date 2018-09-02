@@ -32,6 +32,7 @@
         border-color: #a9c6c9;
     }
 </style>
+<div class="container">
 <div class="row">
     <div class="col-12">
         <!-- Table goes in the document BODY -->
@@ -45,7 +46,8 @@
                 <tr onmouseover="this.style.backgroundColor='#ffff66';"
                     onmouseout="this.style.backgroundColor='#d4e3e5';">
                     <td>{{ contact.game_name }}</td>
-                    <td><a target="_blank" href="{% url 'polls:details' contact.game_name contact.id  %}">{{ contact.title }}</a></td>
+                    <td><a target="_blank"
+                           href="{% url 'polls:details' contact.game_name contact.id %}">{{ contact.title }}</a></td>
                     <td>{{ contact.create_time }}</td>
                 </tr>
             {% endfor %}
@@ -55,3 +57,5 @@
         <!-- 分页结束 -->
     </div>
 </div>
+</div>
+{% include 'footer.html' %}

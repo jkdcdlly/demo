@@ -3,9 +3,9 @@
 <head>
 
     {% if postdetail.title %}
-        <title>BBGO Game -{{ postdetail.title }}</title>
+        <title>[Selling][{{ game_name }}]-{{ postdetail.title }}</title>
     {% else %}
-        <title>BBGO Game Trading Market</title>
+        <title>[Selling] Game Trading Market</title>
     {% endif %}
     <meta charset="UTF-8">
     {% if postdetail.mate_desc %}
@@ -23,7 +23,7 @@
 
     {% load static %}
     <meta name="viewport"
-          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
@@ -85,3 +85,13 @@
     {% endblock %}
 
     <!--标题栏结束-->
+    <div class="row pagination">
+        {{ game_name }}
+        <ul>
+            <li><a href="/start/Hot">Hot</a></li>
+            {% for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                <li><a href="{% url 'polls:start' i %}" rel="nofollow">{{ i }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

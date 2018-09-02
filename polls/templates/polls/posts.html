@@ -1,26 +1,29 @@
+{% load static %}
 {% include 'header.html' %}
 <!--内容开始-->
-<div class="row">
-<div class="col-md-8" id='post_message'>
-    {% autoescape off %}
-        {{ postdetail.post_detail }}
-    {% endautoescape %}
-</div>
-<div class="col-md-4">
-    <div class="page-header">
-        <h4>Similar Threads</h4>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8" id='post_message'>
+            {% autoescape off %}
+                {{ postdetail.post_detail }}
+            {% endautoescape %}
+        </div>
+        <div class="col-md-4">
+            <div class="page-header">
+                <h4>Similar Threads</h4>
+            </div>
+            {% if contact_list %}
+                <ul>
+                    {% for contact in contact_list %}
+                        <li>
+                            <a target="_blank"
+                               href="{% url 'polls:details' contact.game_name contact.id %}">{{ contact.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
-    {% if contact_list %}
-<ul>
-        {% for contact in contact_list %}
-<li>
-                <a target="_blank" href="{% url 'polls:details' contact.game_name contact.id  %}">{{ contact.title }}</a>
-</li>
-    {% endfor %}
-</ul>
-{% endif %}
-</div>
 </div>
 <!--内容结束-->
 {% include 'footer.html' %}
-

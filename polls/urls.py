@@ -9,6 +9,7 @@ urlpatterns = [
     path('start/<str:game_name>', views.startView, name='start'),
     path('accounts/<str:game_name>/', views.PostListView, name='list'),
     path('accounts/<str:game_name>/<str:id>/', views.get_post_detail, name='details'),
+    path('accounts/<str:game_name>/<str:id>/site_index', views.get_post_detail, name='details'),
 
     path('<str:game_name>/', views.PostListView, name='lists'),
     path('<str:game_name>/<str:pk>/', views.PostDetailView.as_view(), name='detail'),

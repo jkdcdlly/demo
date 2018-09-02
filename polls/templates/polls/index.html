@@ -1,36 +1,29 @@
 {% load static %}
 {% include 'header.html' %}
-
-<div class="row pagination">
-    {{ game_name }}
-    <ul>
-        <li><a href="/start/Hot">Hot</a></li>
-        {% for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-            <li><a href="{% url 'polls:start' i %}" rel="nofollow">{{ i }}</a></li>
-        {% endfor %}
-    </ul>
-</div>
-<div class="row ">
-    {% if game_info_list %}
-        {% for game_info in game_info_list %}
-            <div class="col-md-3 col-sm-6 col-xs-6">
-                <div class="tile btn-success">
-                    <a class="btn  btn-large btn-block"
-                       href="{% url 'polls:list' game_info.game_name %}">
-                        <img src="{% static "polls/game/"|add:game_info.game_img_url %}"
-                             onerror="this.src='{% static "polls/default.jpg" %}'"
-                             alt="{{ game_info.game_name }}"
-                             class="tile-image">
-                        <h3 class="tile-title">{{ game_info.game_name }}</h3>
-                        <p>Accounts Buy Sell Trade</p>
-                        <span>threads {{ game_info.post_num }}</span>
-                    </a>
+<div class="container">
+    <div class="row ">
+        {% if game_info_list %}
+            {% for game_info in game_info_list %}
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="tile btn-success">
+                        <a class="btn  btn-large btn-block"
+                           href="{% url 'polls:list' game_info.game_name %}">
+                            <img src="{% static "polls/game/"|add:game_info.game_img_url %}"
+                                 onerror="this.src='{% static "polls/default.jpg" %}'"
+                                 alt="{{ game_info.game_name }}"
+                                 class="tile-image">
+                            <h3 class="tile-title">{{ game_info.game_name }}</h3>
+                            <p>Accounts Buy Sell Trade</p>
+                            <span>threads {{ game_info.post_num }}</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
 
-</div> <!-- /tiles -->
+    </div>
+</div>
+<!-- /tiles -->
 {% include 'footer.html' %}
