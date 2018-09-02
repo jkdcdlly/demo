@@ -85,7 +85,8 @@ def get_post_detail(request, game_name, id):
     postdetail = PostDetail.objects.filter(id=id).first()
     return render(request, 'polls/posts.html', {
         'contact_list': contact_list,
-        'postdetail': postdetail
+        'postdetail': postdetail,
+        'game_name': game_name
     })
 
 

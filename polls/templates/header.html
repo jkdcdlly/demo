@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 
-    {% if postdetail.title %}
-        <title>[Selling][{{ game_name }}]-{{ postdetail.title }}</title>
+    {% if game_name %}
+        <title>[Selling][ {{ game_name }} ]-{{ postdetail.title }}</title>
     {% else %}
         <title>[Selling] Game Trading Market</title>
     {% endif %}
