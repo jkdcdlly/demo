@@ -1,9 +1,24 @@
 {% load static %}
 {% include 'header.html' %}
 <!--内容开始-->
+<style>
+    #post_title h2 {
+        background: DodgerBlue !important;
+        border-radius: 6px 6px 6px 6px !important;
+        box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+        color: #FFFFFF;
+        font-family: "微软雅黑", "宋体", "黑体", Arial;
+        font-size: 17px;
+        font-weight: bold;
+        line-height: 25px;
+        margin: 15px 0 !important;
+        padding: 5px 0 5px 20px;
+        text-shadow: 2px 2px 3px #222222;
+    }
+</style>
 <div class="container">
     <div class="row">
-        <div class="col-md-8" id='post_message'>
+        <div class="col-md-8" id='post_title'>
             <h2>{{ postdetail.title }}</h2>
         </div>
         <div class="col-md-8" id='post_message'>
