@@ -4,6 +4,8 @@
 
     {% if game_name %}
         <title>[Selling][ {{ game_name }} ]-{{ postdetail.title }}</title>
+    {% elif postdetail.game_name %}
+        <title>[Selling][ {{ postdetail.game_name }} ]-{{ postdetail.title }}</title>
     {% else %}
         <title>[Selling] Game Trading Market</title>
     {% endif %}
