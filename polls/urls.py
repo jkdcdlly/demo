@@ -12,6 +12,6 @@ urlpatterns = [
     path('accounts/<str:game_name>/<str:id>/site_index', views.get_post_detail, name='details'),
 
     path('<str:game_name>/', views.PostListView, name='lists'),
-    path('<str:game_name>/<str:pk>/', views.get_post_detail_byid, name='detail'),
-    path('mmo-trading-market/<str:pk>/', views.get_post_detail_byid),
+    # path('<str:game_name>/<str:id>/', views.get_post_detail_byid, name='detail'),
+    path('mmo-trading-market/<str:id>/', views.get_post_detail_byid),
 ]
