@@ -89,7 +89,7 @@ def get_post_detail(request, game_name, id):
     })
 
 
-def get_post_detail_byid(request, id):
+def get_post_detail_byid(request, game_name, id):
     postdetail = PostDetail.objects.filter(id=id).first()
     contact_list = PostList.objects.filter(game_name=postdetail.game_name).order_by('-create_time')[0:10]
     return render(request, 'polls/posts.html', {
