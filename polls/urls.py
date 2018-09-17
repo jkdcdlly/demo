@@ -13,5 +13,5 @@ urlpatterns = [
 
     path('<str:game_name>/', views.PostListView, name='lists'),
     path('<str:game_name>/<str:pk>/', views.PostDetailView.as_view(), name='detail'),
-    path('mmo-trading-market/<str:pk>/', views.PostDetailView.as_view()),
+    path('mmo-trading-market/<str:pk>/', views.get_post_detail_byid),
 ]

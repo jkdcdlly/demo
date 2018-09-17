@@ -89,5 +89,14 @@ def get_post_detail(request, game_name, id):
     })
 
 
+def get_post_detail_byid(request, id):
+    postdetail = PostDetail.objects.filter(id=id).first()
+    contact_list = PostList.objects.filter(game_name=postdetail.game_name).order_by('-create_time')[0:10]
+    return render(request, 'polls/posts.html', {
+        'contact_list': contact_list,
+        'postdetail': postdetail
+    })
+
+
 def google(request):
     return render(request, "polls/google9a8e8bb776390296.html")
