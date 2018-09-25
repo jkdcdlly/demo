@@ -3,18 +3,17 @@
 <head>
 
     {% if game_name %}
-        <title>[Selling][ {{ game_name }} ]-{{ postdetail.title }}</title>
+        <title>[Selling][ {{ game_name }} ]-{{ postdetail.title }} {{ game_name }} Trading Market | {{ game_name }} gold | {{ game_name }} power leveling | {{ game_name }} items - BBGO Game</title>
     {% elif postdetail.game_name %}
-        <title>[Selling][ {{ postdetail.game_name }} ]-{{ postdetail.title }}</title>
+        <title>[Selling][ {{ postdetail.game_name }} ]-{{ postdetail.title }} - BBGO Game </title>
     {% else %}
-        <title>[Selling] Game Trading Market</title>
+        <title>[Selling] Game Trading Market | game gold | power leveling | game items</title>
     {% endif %}
     <meta charset="UTF-8">
     {% if postdetail.mate_desc %}
-        <meta name="description" content="BBGO Game -{{ postdetail.mate_desc }}">
+        <meta name="description" content="{{ postdetail.mate_desc }} {{ game_name }} Trading Market | {{ game_name }} gold | {{ game_name }} power leveling | {{ game_name }} items - BBGO Game">
     {% else %}
-        <meta name="description"
-              content="BBGO Game - Buy Sell Trade MMORPG Accounts Boosting Powerleveling Gold Currency">
+        <meta name="description" content=" {{ game_name }} Trading Market | {{ game_name }} gold | {{ game_name }} power leveling | {{ game_name }} items - BBGO Game">
     {% endif %}
     {% if postdetail.mate_desc %}
         <meta name="keywords" content="BBGO Game -{{ postdetail.mate_key }}">
