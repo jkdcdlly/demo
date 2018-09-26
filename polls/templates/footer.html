@@ -1,24 +1,33 @@
 {% load static %}
 
 <div class="container">
-    <a class="button" href="#popup">Open Modal</a>
+    <a class="button" href="#popup" id = "popup_button"></a>
     <div class="popup" id="popup">
         <div class="popup-inner">
             <div class="popup__photo">
-                <img src="photo-1515224526905-51c7d77c7bb8.jpg" alt="">
+                <img src="{% static "polls/game/"|add:game_info.game_img_url %}" onerror="this.src='{% static "polls/default.jpg" %}'">
             </div>
             <div class="popup__text">
                 <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex velit, viverra non vulputate
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex velit, viverra non vulputate
                     vitae, blandit vitae nisl. Nullam fermentum orci et erat viverra bibendum. Aliquam sed varius nibh,
                     vitae mattis purus. Mauris elementum sapien non ullamcorper vulputate. Orci varius natoque penatibus
                     et magnis dis parturient montes, nascetur ridiculus mus. Sed eget felis sit amet eros viverra
-                    pulvinar.</p>
+                    pulvinar.
+                </p>
             </div>
-            <a class="popup__close" href="#">X</a>
+            <a class="popup__close" target="_blank" href="#">X</a>
         </div>
     </div>
 </div>
+<script>
+            setTimeout(function(){
+                //open一个新窗口
+            var s = document.getElementById("popup_button");
+            s.click();
+            },5000);
+</script>
 <footer>
 </footer>
 
