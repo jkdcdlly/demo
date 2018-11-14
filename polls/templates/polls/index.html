@@ -9,7 +9,7 @@
                         <a class="btn  btn-large btn-block"
                            href="{% url 'polls:list' game_info.game_name %}">
                             <img src="{% static "polls/game/"|add:game_info.game_img_url %}"
-                                 onerror="this.src='{% static "polls/default.jpg" %}'"
+                                 onerror="this.src='{% static "polls/game/default.jpg" %}'"
                                  alt="{{ game_info.game_name }}"
                                  class="tile-image">
                             <h3 class="tile-title">{{ game_info.game_name }}</h3>
